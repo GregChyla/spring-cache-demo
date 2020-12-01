@@ -2,6 +2,7 @@ package com.cache.demo.service;
 
 import com.cache.demo.exception.UserNotFoundException;
 import com.cache.demo.model.User;
+import com.cache.demo.model.UserModifier;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
@@ -42,7 +43,12 @@ public class UserService {
     }
 
     @CachePut
-    public User addUser(User user) {
+    public User addUser(UserModifier userModifier) {
+                var user = User.builder()
+                        .id(UUID.randomUUID())
+                        .age(userModifier.getAge())
+                        .name(userModifier.getName())
+                        .build();
         userList.add(user);
         return user;
     }

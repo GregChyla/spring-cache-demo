@@ -3,12 +3,9 @@ package com.cache.demo.model;
 import lombok.Builder;
 import lombok.Value;
 
-import java.util.UUID;
-
 @Value
 @Builder
-public class User {
-    UUID id;
+public class UserModifier {
     String name;
     int age;
 }
